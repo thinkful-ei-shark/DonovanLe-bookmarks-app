@@ -4,25 +4,29 @@ import api from '../services/api';
 import store from '../manipulate-store/store';
 
 function handleNewButton() {
-    $('body').on('click', '.new-button', function () {
+    $('header').on('click', '.new-button', function () {
         console.log('NEW BUTTON CLICKED');
-        render.renderNewAddScreen();
+        store.store.adding = true;
+        render();
     })
 }
 
 function handleSubmitButton() {
-    $('body').on('submit', '.new-form', function (x) {
+    $('main').on('submit', '.new-form', function (x) {
         x.preventDefault();
         console.log('SUBMIT BUTTON CLICKED');
+        store.store.adding = false;
         const values = {};
         values.title = $('.new-title').val();
         values.url = $('.new-url').val();
-        values.description = $('.new-description').val();
+        values.desc = $('.new-description').val();
+        console.log(values.desc);
         values.rating = $('.new-rating').val();
+        console.log(values);
         api.addBookmarks(values)
             .then((newBookmark) => {
                 store.addBookmark(newBookmark);
-                render.renderInitialScreen();
+                render();
             })
             .catch((e) => {
                 store.setError(e.message);
@@ -30,7 +34,12 @@ function handleSubmitButton() {
     })
 }
 
+function eventBinder() {
+    handleNewButton();
+    handleSubmitButton();
+}
 export default {
     handleNewButton,
-    handleSubmitButton
+    handleSubmitButton,
+    eventBinder
 }

@@ -1,19 +1,24 @@
 import temp from '../components/templates';
+import store from '../manipulate-store/store';
 import $ from 'jquery';
-import event from '../event-handler/events';
 
 function renderInitialScreen() {
-    $('header').append(temp.initialControls());
-    $('main').append(temp.minimizedBookmarks());
-    event.handleNewButton();
+    $('header').html(temp.initialControls());
+    $('main').html(temp.minimizedBookmarks());
 }
 
 function renderNewAddScreen() {
-    $('body').html(temp.addNewBookmark());
-    event.handleSubmitButton();
+    $('header').empty();
+    $('main').html(temp.addNewBookmark());
 }
 
-export default {
-    renderInitialScreen,
-    renderNewAddScreen
+function render() {
+    if (store.store.adding === false) {
+        renderInitialScreen()
+    }
+    if (store.store.adding === true) {
+        renderNewAddScreen();
+    }
 }
+
+export default render;

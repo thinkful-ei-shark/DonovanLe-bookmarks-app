@@ -1,22 +1,4 @@
-const BASE_URL = 'https://thinkful-list-api.herokuapp.com/donovan';
-
-
-/*
-GETTING A BAD 400 ERROR ON YOUR ERROR HANDLING
-
-
-
-
-
-
-
-*/
-
-
-
-
-
-
+const BASE_URL = 'https://thinkful-list-api.herokuapp.com/bruh';
 
 const listApiFetch = function (...args) {
     // setup promise chain outside of scope

@@ -19,7 +19,14 @@ function minimizedBookmarks() {
     let temp = '';
     let counter = obj.store.bookmarks.length;
     for (let i = 0; i < counter; i++) {
-        temp += `<div><h3>${obj.store.bookmarks[i].title}</h3><h3>${obj.store.bookmarks[i].rating}</h3></div>`;
+        temp += `
+        <button type="button" class="collapsible">
+        ${obj.store.bookmarks[i].title}${obj.store.bookmarks[i].rating}
+        </button>
+        <div class="content">
+            <p>${obj.store.bookmarks[i].desc}</p>
+            <a href="${obj.store.bookmarks[i].url}">Visit website</a>
+        </div>`;
     }
     return temp;
 }
@@ -39,19 +46,9 @@ function addNewBookmark() {
     return temp;
 }
 
-function expandedBookmarks() {
-    const temp = `
-    <div>
-        <p>Description</p>
-        <span><a>Link</a></span>
-    </div>
-    `;
-    return temp;
-}
 
 export default {
     initialControls,
     minimizedBookmarks,
     addNewBookmark,
-    expandedBookmarks
 }
