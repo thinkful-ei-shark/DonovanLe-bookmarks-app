@@ -1,5 +1,7 @@
 'use strict';
 import $ from 'jquery';
+
+
 const store = {
     bookmarks: [{
             id: 'x56w',
@@ -44,6 +46,7 @@ const findAndUpdate = function (id, newData) {
 const findAndDelete = function (id) {
     store.bookmarks = store.bookmarks.filter(bookmark => bookmark.id !== id);
 }
+
 
 export default {
     store,

@@ -55,11 +55,7 @@ const editBookmarks = function (id, updateData) {
 
 const deleteBookmarks = function (id) {
     return listApiFetch(`${BASE_URL}/bookmarks/${id}`, {
-        method: 'DELETE',
-        headers: {
-            'Content-Type': 'application/json'
-        },
-        body: ''
+        method: 'DELETE'
     });
 }
 

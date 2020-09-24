@@ -3,6 +3,13 @@ import render from '../render/render';
 import api from '../services/api';
 import store from '../manipulate-store/store';
 
+
+function getItemIdFromElement(bookmark) {
+    return $(bookmark)
+        .closest('.item-content')
+        .data('item-id');
+}
+
 function handleNewButton() {
     $('header').on('click', '.new-button', function () {
         console.log('NEW BUTTON CLICKED');
@@ -34,9 +41,49 @@ function handleSubmitButton() {
     })
 }
 
+function handleExpand() {
+    $('body').on('click', '.collapsible', function () {
+        this.classList.toggle("active");
+        var content = this.nextElementSibling;
+        if (content.style.display === "block") {
+            content.style.display = "none";
+        } else {
+            content.style.display = "block";
+        }
+    })
+}
+
+function handleEdit() {
+    $('body').on('click', '.edit-button', function () {
+        console.log('EDIT BUTTON');
+    })
+}
+
+function handleDelete() {
+    $('body').on('click', '.delete-button', function (event) {
+        console.log('DELETE BUTTON');
+        const id = getItemIdFromElement(event.currentTarget);
+        console.log(id);
+
+        api.deleteBookmarks(id)
+            .then(() => {
+                store.findAndDelete(id);
+                render();
+            })
+            .catch((e) => {
+                console.log(e);
+                store.setError(e.message);
+            })
+    })
+}
+
 function eventBinder() {
     handleNewButton();
     handleSubmitButton();
+    handleExpand();
+    handleEdit();
+    handleDelete();
+    getItemIdFromElement();
 }
 export default {
     handleNewButton,
