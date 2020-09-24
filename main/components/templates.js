@@ -1,6 +1,9 @@
 import obj from '../manipulate-store/store';
 import $ from 'jquery';
 
+
+
+
 function initialControls() {
     const temp = `
     <div class="control-section">
@@ -27,7 +30,7 @@ function minimizedBookmarks() {
         temp += `   
         <div class="item-content" data-item-id=${obj.store.bookmarks[i].id}> 
         <button type="button" class="collapsible">
-        ${obj.store.bookmarks[i].title}   Rating: ${stars(obj.store.bookmarks[i].rating)}
+        <span style="font-size:15px;">${obj.store.bookmarks[i].title}</span><span style="margin-left: 20px;">${convertRating(obj.store.bookmarks[i].rating)}</span>
         </button>
             <div class="content">
                 <p>${obj.store.bookmarks[i].desc} </p>
@@ -43,21 +46,30 @@ function minimizedBookmarks() {
     return temp; //return the template to the render function in order to be rendered
 }
 
+function convertRating(rating) {
+    let page = '';
+    for (let i = 0; i < rating; i++) {
+        page += '<i class="fas fa-star" style="margin-right:5px;"></i>'
+    }
+    console.log(page);
+    return page;
+}
+
 function addNewBookmark() {
     const temp = `
     <div>
         <form class="new-form">
             <div class="style-form-input">
-            <label>Add new title: </label><input type="text" class="new-title" placeholder="Nickname bookmark"/>
+            <label>Add new title: </label><input type="text" class="new-title" placeholder="Nickname bookmark" required/>
             </div>
             <div class="style-form-input">
-            <label>Add url: </label><input type="text" class="new-url" placeholder="'https://something.com'"/>
+            <label>Add url: </label><input type="text" class="new-url" placeholder="'https://something.com'" required/>
             </div>
             <div class="style-form-input">
-            <label>Add rating: </label><input type="number" min="0" max="5" class="new-rating" placeholder="1-5 stars"/>
+            <label>Add rating: </label><input type="number" min="0" max="5" class="new-rating" placeholder="1-5 stars" required/>
             </div>
             <div class="style-form-input">
-            <label>Add description: </label><input type="text" class="new-description"/>
+            <label>Add description: </label><textarea class="new-description" required></textarea>
             </div>
             <div class="submit-button">
             <input type="submit" class="submit-new" placeholder="Submit"/>
@@ -73,5 +85,6 @@ function addNewBookmark() {
 export default {
     initialControls,
     minimizedBookmarks,
-    addNewBookmark
+    addNewBookmark,
+    convertRating
 }
