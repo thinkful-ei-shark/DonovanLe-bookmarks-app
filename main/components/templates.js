@@ -10,15 +10,15 @@ import $, {
 function initialControls() {
     const temp = `
     <div class="control-section">
-        <button class="new-button style-controls">+ New</button>
+        <button class="new-button">+ New Book</button>
             <select name="rating" class="js-bookmark-rating style-controls" aria-label="rating-dropdown" placeholder="Filter">
                 <option class="filter-by" value disabled selected hidden>Filter by</option>
                 <option class="filter-by" value="0">All</option>
-                <option class="filter-by" value="1">1 star</option>
-                <option class="filter-by" value="2">2 star</option>
-                <option class="filter-by" value="3">3 star</option>
-                <option class="filter-by" value="4">4 star</option>
-                <option class="filter-by" value="5">5 star</option>
+                <option class="filter-by" value="1">1 star+</option>
+                <option class="filter-by" value="2">2 star+</option>
+                <option class="filter-by" value="3">3 star+</option>
+                <option class="filter-by" value="4">4 star+</option>
+                <option class="filter-by" value="5">5 star+</option>
             </select>
     </div>
     
@@ -44,19 +44,18 @@ function minimizedBookmarks() {
                 temp += `   
                 <div class="item-content" data-item-id=${obj.store.bookmarks[i].id}> 
                 <button type="button" class="collapsible">
-                <span style="font-size:15px;">${obj.store.bookmarks[i].title}</span><span style="margin-left: 20px;">${convertRating(obj.store.bookmarks[i].rating)}</span>
+                <span class="bookmark-title">${obj.store.bookmarks[i].title}</span><span class="star-rating">${convertRating(obj.store.bookmarks[i].rating)}</span>
                 </button>
                     <div class="content">
                         <p>${obj.store.bookmarks[i].desc} </p>
                         <a href="${obj.store.bookmarks[i].url}" target="_blank" rel="noopener" class="website-link">Visit website</a>
                         <div class="edit-delete">
-                            <button class="edit-button">Edit</button>
                             <button class="delete-button">Delete</button>
                         </div>
                     </div>
                 </div>`;
             }
-            if (filter != 0 && obj.store.bookmarks[i].rating == filter) {
+            if (filter != 0 && obj.store.bookmarks[i].rating >= filter) {
                 temp += `   
                 <div class="item-content" data-item-id=${obj.store.bookmarks[i].id}> 
                 <button type="button" class="collapsible">
@@ -71,10 +70,9 @@ function minimizedBookmarks() {
                     </div>
                 </div>`;
             }
-            //template is made to continuosly add more bookmarks as user adds more
         }
     }
-    return temp; //return the template to the render function in order to be rendered
+    return temp;
 }
 
 function convertRating(rating) {
