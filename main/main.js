@@ -13,9 +13,10 @@ function main() {
 
     api.getBookmarks()
         .then((bookmarks) => {
+            console.log(bookmarks);
             bookmarks.forEach(element => {
                 store.addBookmark(element);
-                console.log(store.store.bookmarks);
+                console.log(element);
             });
             render();
         })

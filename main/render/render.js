@@ -13,12 +13,17 @@ function renderNewAddScreen() {
 }
 
 function render() {
+    if (store.store.error) {
+        const err = temp.generateError();
+        $('.error-div').html(err);
+    }
     if (store.store.adding === false) {
         renderInitialScreen()
     }
     if (store.store.adding === true) {
         renderNewAddScreen();
     }
+
 }
 
 export default render;

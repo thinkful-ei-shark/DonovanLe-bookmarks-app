@@ -63,17 +63,27 @@ function handleDelete() {
     $('body').on('click', '.delete-button', function (event) {
         console.log('DELETE BUTTON');
         const id = getItemIdFromElement(event.currentTarget);
-        console.log(id);
-
         api.deleteBookmarks(id)
             .then(() => {
                 store.findAndDelete(id);
                 render();
             })
             .catch((e) => {
-                console.log(e);
                 store.setError(e.message);
             })
+    })
+}
+
+function handleFilter() {
+    $('header').on('click', function () {
+        console.log('CHANGE HAPPENING');
+        $('.js-bookmark-rating').on('change', function () {
+            let value = $(this).val();
+            console.log('FILTER CHANGED')
+            console.log(value);
+            store.store.filter = value;
+            render();
+        })
     })
 }
 
@@ -84,6 +94,7 @@ function eventBinder() {
     handleEdit();
     handleDelete();
     getItemIdFromElement();
+    handleFilter();
 }
 export default {
     handleNewButton,
