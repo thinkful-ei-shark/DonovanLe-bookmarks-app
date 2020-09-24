@@ -66,7 +66,6 @@ function minimizedBookmarks() {
                         <p>${obj.store.bookmarks[i].desc} </p>
                         <a href="${obj.store.bookmarks[i].url}" target="_blank" rel="noopener" class="website-link">Visit website</a>
                         <div class="edit-delete">
-                            <button class="edit-button">Edit</button>
                             <button class="delete-button">Delete</button>
                         </div>
                     </div>
