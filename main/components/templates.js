@@ -12,7 +12,7 @@ function initialControls() {
     <div class="control-section">
         <button class="new-button">+ New Book</button>
             <select name="rating" class="js-bookmark-rating style-controls" aria-label="rating-dropdown" placeholder="Filter">
-                <option class="filter-by" value disabled selected hidden>Filter by</option>
+                <option class="filter-by" id="shownValue" value hidden>Filter by</option>
                 <option class="filter-by" value="0">All</option>
                 <option class="filter-by" value="1">1 star+</option>
                 <option class="filter-by" value="2">2 star+</option>
@@ -21,8 +21,6 @@ function initialControls() {
                 <option class="filter-by" value="5">5 star+</option>
             </select>
     </div>
-    
-
     `;
     return temp;
 }
@@ -31,7 +29,6 @@ function minimizedBookmarks() {
     let temp = ''; //variable to hold page template
     let counter = obj.store.bookmarks.length; //counter for how long your bookmark object is
     let filter = obj.store.filter;
-    console.log(filter);
     if (obj.store.bookmarks.length === 0) {
         temp += `
         <div>
@@ -41,7 +38,7 @@ function minimizedBookmarks() {
     } else {
         for (let i = 0; i < counter; i++) { //loop through bookmark object in order to get every object inside
             if (filter == 0) {
-                temp += `   
+                temp += `
                 <div class="item-content" data-item-id=${obj.store.bookmarks[i].id}> 
                 <button type="button" class="collapsible">
                 <span class="bookmark-title">${obj.store.bookmarks[i].title}</span><span class="star-rating">${convertRating(obj.store.bookmarks[i].rating)}</span>
@@ -91,13 +88,13 @@ function addNewBookmark() {
             <label>Add new title: </label><input type="text" class="new-title" placeholder="Nickname bookmark" required/>
             </div>
             <div class="style-form-input">
-            <label>Add url: </label><input type="text" class="new-url" placeholder="'https://something.com'" required/>
+            <label>Add url: </label><input type="url" class="new-url" placeholder="'https://something.com'" required/>
             </div>
             <div class="style-form-input">
-            <label>Add rating: </label><input type="number" min="0" max="5" class="new-rating" placeholder="1-5 stars" required/>
+            <label>Add rating: </label><input type="number" min="0" max="5" class="new-rating" placeholder="1-5 stars"/>
             </div>
             <div class="style-form-input">
-            <label>Add description: </label><textarea class="new-description" required></textarea>
+            <label>Add description: </label><textarea class="new-description"></textarea>
             </div>
             <div class="submit-button">
             <input type="submit" class="submit-new" placeholder="Submit"/>

@@ -27,7 +27,6 @@ function handleSubmitButton() {
         values.title = $('.new-title').val();
         values.url = $('.new-url').val();
         values.desc = $('.new-description').val();
-        console.log(values.desc);
         values.rating = $('.new-rating').val();
         console.log(values);
         api.addBookmarks(values)
@@ -74,13 +73,13 @@ function handleDelete() {
     })
 }
 
+
 function handleFilter() {
     $('header').on('click', function () {
         console.log('CHANGE HAPPENING');
         $('.js-bookmark-rating').on('change', function () {
             let value = $(this).val();
-            console.log('FILTER CHANGED')
-            console.log(value);
+            console.log('FILTER CHANGED');
             store.store.filter = value;
             render();
         })
@@ -96,8 +95,8 @@ function eventBinder() {
     getItemIdFromElement();
     handleFilter();
 }
+
+
 export default {
-    handleNewButton,
-    handleSubmitButton,
     eventBinder
 }
