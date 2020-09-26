@@ -87,6 +87,13 @@ function handleFilter() {
     })
 }
 
+function handleCancel() {
+    $('body').on('click', '.cancel-new', function () {
+        store.store.adding = false;
+        render();
+    })
+}
+
 function eventBinder() {
     handleNewButton();
     handleSubmitButton();
@@ -95,6 +102,7 @@ function eventBinder() {
     handleDelete();
     getItemIdFromElement();
     handleFilter();
+    handleCancel();
 }
 export default {
     handleNewButton,

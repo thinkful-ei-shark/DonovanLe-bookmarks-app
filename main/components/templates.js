@@ -94,6 +94,7 @@ function addNewBookmark() {
         
             <div class="submit-button">
             <input type="submit" class="submit-new" placeholder="Submit"/>
+            <button class="cancel-new">Cancel</button>
             </div>
             
         </form>
