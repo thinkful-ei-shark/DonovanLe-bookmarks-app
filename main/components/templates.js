@@ -84,18 +84,14 @@ function addNewBookmark() {
     const temp = `
     <div>
         <form class="new-form">
-            <div class="style-form-input">
-            <label>Add new title: </label><input type="text" class="new-title" placeholder="Nickname bookmark" required/>
-            </div>
-            <div class="style-form-input">
-            <label>Add url: </label><input type="url" class="new-url" placeholder="'https://something.com'" required/>
-            </div>
-            <div class="style-form-input">
-            <label>Add rating: </label><input type="number" min="0" max="5" class="new-rating" placeholder="1-5 stars"/>
-            </div>
-            <div class="style-form-input">
-            <label>Add description: </label><textarea class="new-description"></textarea>
-            </div>
+            <label class="style-form-input" for="title">Add new title: </label><input id="title" type="text" class="new-title" placeholder="Nickname bookmark" required/>
+            
+            <label class="style-form-input" for="url">Add url: </label><input id="url" type="url" class="new-url" placeholder="'https://something.com'" required/>
+          
+            <label class="style-form-input" for="rating">Add rating: </label><input id="rating" type="number" min="0" max="5" class="new-rating" placeholder="1-5 stars"/>
+            
+            <label class="style-form-input" for="description">Add description: </label><textarea id="description" class="new-description"></textarea>
+        
             <div class="submit-button">
             <input type="submit" class="submit-new" placeholder="Submit"/>
             </div>

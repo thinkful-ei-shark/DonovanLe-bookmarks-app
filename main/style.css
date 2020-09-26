@@ -2,10 +2,12 @@
   margin: 0;
   padding: 0;
 }
+
 body {
-  background-color: #adadad;
+  background-color: #FFE4AD;
   font-family: "Architects Daughter", cursive;
 }
+
 h1 {
   background-color: #f7fff7;
   font-size: 40px;
@@ -19,15 +21,19 @@ h1 {
   -moz-box-shadow: 10px 10px 5px 0px #5c5c5c;
   box-shadow: 10px 10px 5px 0px #5c5c5c;
 }
+
 input {
   text-overflow: ellipsis;
 }
+
 .none-avail {
   font-size: 23px;
 }
+
 .control-section {
   text-align: center;
 }
+
 .style-controls {
   text-align: center;
   display: inline-block;
@@ -54,12 +60,15 @@ input {
   background-position: right 0.7em top 50%, 0 0;
   background-size: 0.65em auto, 100%;
 }
+
 .style-controls::-ms-expand {
   display: none;
 }
+
 .style-controls:hover {
   border-color: #4ecdc4;
 }
+
 .style-controls:focus {
   border-color: #aaa;
   box-shadow: 0 0 1px 3px rgba(59, 153, 252, 0.7);
@@ -67,9 +76,11 @@ input {
   color: #222;
   outline: none;
 }
+
 .style-controls option {
   font-weight: normal;
 }
+
 .new-button {
   -webkit-border-radius: 28;
   -moz-border-radius: 28;
@@ -81,26 +92,34 @@ input {
   padding: 10px 20px 10px 20px;
   border: solid #4ecdc4 2px;
   text-decoration: none;
-  margin-right: 20px;
+  margin-right: 35px;
+  margin-bottom: 25px;
 }
+
 .new-button:hover {
-  background: #ffe66d;
+  background: #12B2E2;
+  color: white;
+  border-color: white;
   text-decoration: none;
 }
+
 .item-content {
   margin: 10px;
 }
+
 .bookmark-title {
   font-size: 19px;
   margin-left: 5%;
 }
+
 .star-rating {
   font-size: 19px;
   float: right;
   margin-right: 5%;
 }
+
 .collapsible {
-  background-color: #777;
+  background-color: #084C61;
   color: white;
   cursor: pointer;
   padding: 18px;
@@ -113,7 +132,7 @@ input {
 
 .active,
 .collapsible:hover {
-  background-color: #555;
+  background-color: #23C0D1;
 }
 
 .content {
@@ -133,13 +152,14 @@ input {
 
 .new-form {
   margin: auto;
-  font-size: 25px;
-  width: 350px;
+  font-size: 20px;
+  width: 310px;
 }
 
 .style-form-input {
   margin-bottom: 15px;
-  display: block;
+  display: inline-block;
+  margin-right: 10px;
 }
 
 .new-title {
@@ -176,10 +196,12 @@ input {
   text-decoration: none;
   margin-right: 20px;
 }
+
 .submit-new:hover {
   background: #ffe66d;
   text-decoration: none;
 }
+
 .submit-button {
   text-align: center;
   margin: auto;
